@@ -30,10 +30,7 @@ public class UserController {
     public String login(String username, String password, HttpSession session) {
         User login = userService.login(username, password);
         if (login != null) {
-//            session.setAttribute("user", login);
-//            System.out.println("登录成功");
-//            return "redirect:/emp/findAll"; // 跳转到查询所有
-            session.setAttribute("message", "aaaaa!!!!");
+            session.setAttribute("message", login.getUsername()+",欢迎登陆");
             return "redirect:/success"; // 跳转到查询所有
         } else {
             return "redirect:/index"; // 跳转回到登录

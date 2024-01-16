@@ -10,14 +10,11 @@
 			<div id="top_content">
 					<div id="header">
 						<div id="rightheader">
-							<p>
-								2009/11/20
-								<br />
-							</p>
+							<p th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm:ss')}"></p>
 						</div>
 						<div id="topheader">
 							<h1 id="title">
-								<a href="#">main</a>
+								<a href="#">welcome to regist</a>
 							</h1>
 						</div>
 						<div id="navigation">
@@ -29,7 +26,7 @@
 					<h1>
 						注册
 					</h1>
-					<form th:action="@{/user/register}" method="post">
+					<form th:action="@{/user/register}" method="post" autocomplete="off">
 						<table cellpadding="0" cellspacing="0" border="0"
 							class="form_table">
 							<tr>
@@ -72,7 +69,7 @@
 								<td valign="middle" align="right">
 									验证码:
 									<img id="num" th:src="@{/user/code}" />
-									<a href="javascript:;" onclick="document.getElementById('num').src = '/ems/user/code?'+(new Date()).getTime()">换一张</a>
+									<a href="javascript:;" onclick="document.getElementById('num').src = '/user/code?'+(new Date()).getTime()">换一张</a>
 								</td>
 								<td valign="middle" align="left">
 									<input type="text" class="inputgri" name="code" />
@@ -87,7 +84,7 @@
 			</div>
 			<div id="footer">
 				<div id="footer_bg">
-				ABC@126.com
+				sun357124@163.com
 				</div>
 			</div>
 		</div>
