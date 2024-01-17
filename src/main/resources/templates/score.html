@@ -8,26 +8,29 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<h2>学生成绩曲线图</h2>
-<canvas id="myChart" width="400" height="200"></canvas>
-<script>
+<div style="width: 80%; margin: auto;">
+    <h2 th:text="${student.name} + '的成绩曲线图'"></h2>
+    <!-- 用于渲染曲线图的 Canvas -->
+    <canvas id="myChart" width="400" height="200"></canvas>
+</div>
+<div id="studentData" th:text="${student.scores}" style="display:none;"></div>
+<script th:inline="javascript">
     // 假设以下是学生成绩数据，实际中应该从后端获取
-    var studentData = [
-        { name: '学生1', score: 85 },
-        { name: '学生2', score: 90 },
-        { name: '学生3', score: 78 },
-        // 更多学生数据...
-    ];
-
-    // 提取学生姓名和分数
-    var labels = studentData.map(function(student) {
-        return student.name;
-    });
-
-    var scores = studentData.map(function(student) {
-        return student.score;
-    });
-
+    var dataString = document.getElementById('studentData').textContent;
+    var studentData = JSON.parse(dataString);
+    var labels = [];
+    var data = [];
+    for (var i = 0; i < studentData.length; i++) {
+        var dateObject = new Date(studentData[i].examTime);
+        var year = dateObject.getFullYear();
+        var month = ('0' + (dateObject.getMonth() + 1)).slice(-2);
+        var day = ('0' + dateObject.getDate()).slice(-2);
+        var formattedDate = year + '-' + month + '-' + day;
+        labels[i] = formattedDate;
+        data[i] = studentData[i].score;
+    }
+    console.log(labels);
+    console.log(data);
     // 创建曲线图
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -35,8 +38,8 @@
         data: {
             labels: labels,
             datasets: [{
-                label: '学生成绩曲线',
-                data: scores,
+                label: '考试成绩:',
+                data: data,
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 2,
                 fill: false

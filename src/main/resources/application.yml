@@ -1,4 +1,5 @@
-
+server:
+  port: 8080
 spring:
   # 配置数据源信息
   datasource:

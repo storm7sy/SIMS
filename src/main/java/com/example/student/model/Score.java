@@ -8,19 +8,19 @@ import lombok.Data;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
+import java.util.Date;
 import java.util.List;
 
 @Data
 @ToString
 @Accessors(chain = true)
-@TableName("student")
-public class Student {
+@TableName("score")
+public class Score {
     @TableId(type = IdType.AUTO)
-    private Long id;
-    private String studentNumber;
-    private String name;
-    private String gender;
-    private String grade;
+    private Long id;//主键
+    private String classCode;//课程编码
+    private String score;//分数
+    private Date examTime;//考试时间
     @TableField(exist = false)
-    private String scores;//成绩
+    private String name;//名称
 }

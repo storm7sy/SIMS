@@ -1,5 +1,7 @@
 package com.example.student.controller;
 
+import com.example.student.model.Classes;
+import com.example.student.model.Score;
 import com.example.student.model.Student;
 import com.example.student.serivce.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class StudentController {
@@ -23,7 +27,8 @@ public class StudentController {
     }
     @GetMapping("/showScoreCurve")
     public String showScoreCurve(Long id, Model model) {
-        model.addAttribute("student", studentService.getStudentById(id));
+        Student student = studentService.getScore(id);
+        model.addAttribute("student", student);
         return "score";
     }
 }

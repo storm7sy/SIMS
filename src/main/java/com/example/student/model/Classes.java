@@ -13,14 +13,14 @@ import java.util.List;
 @Data
 @ToString
 @Accessors(chain = true)
-@TableName("student")
-public class Student {
+@TableName("class")
+public class Classes {
     @TableId(type = IdType.AUTO)
-    private Long id;
-    private String studentNumber;
-    private String name;
-    private String gender;
-    private String grade;
+    private Long id; //主键
+    private String studentNumber; //学号
+    private String className;//课程名称
+    private String classCode;//课程编码
+    private String grade; //年级
     @TableField(exist = false)
-    private String scores;//成绩
+    List<Score> scores;//成绩
 }
