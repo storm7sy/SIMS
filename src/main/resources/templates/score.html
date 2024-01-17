@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生成绩曲线图</title>
+    <!-- 引入 Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<h2>学生成绩曲线图</h2>
+<canvas id="myChart" width="400" height="200"></canvas>
+<script>
+    // 假设以下是学生成绩数据，实际中应该从后端获取
+    var studentData = [
+        { name: '学生1', score: 85 },
+        { name: '学生2', score: 90 },
+        { name: '学生3', score: 78 },
+        // 更多学生数据...
+    ];
+
+    // 提取学生姓名和分数
+    var labels = studentData.map(function(student) {
+        return student.name;
+    });
+
+    var scores = studentData.map(function(student) {
+        return student.score;
+    });
+
+    // 创建曲线图
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '学生成绩曲线',
+                data: scores,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 2,
+                fill: false
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

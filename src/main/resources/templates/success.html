@@ -30,7 +30,7 @@
             <th scope="col">学生姓名</th>
             <th scope="col">性别</th>
             <th scope="col">年级</th>
-            <!-- 其他学生信息字段 -->
+            <th scope="col">曲线图</th>
         </tr>
         </thead>
         <tbody>
@@ -40,7 +40,10 @@
             <td th:text="${student.name}">姓名</td>
             <td th:text="${student.gender}">性别</td>
             <td th:text="${student.grade}">性别</td>
-            <!-- 其他学生信息字段 -->
+            <td>
+                <!-- 在这里添加一个链接，点击时跳转到新的页面 -->
+                <a th:href="@{'/showScoreCurve' +'?id='+ ${student.id}}">查看成绩曲线</a>
+            </td>
         </tr>
         </tbody>
     </table>
