@@ -96,7 +96,7 @@ h1 {
     background: url(../img/content_bg.gif) repeat-x left top #ffffff;
     color: #666666;
 }
-input:not([type="checkbox"]):not([type="radio"]:not(.file-upload-input)), select, textarea {
+input:not([type="checkbox"]):not([type="radio"]:not(.in-file)), select, textarea {
     width: 300px;
     height: 16px;
     margin-bottom: 10px;

@@ -6,11 +6,17 @@
     <title>学生成绩曲线图</title>
     <!-- 引入 Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .but-back {
+            display: flex;
+            justify-content: flex-end;
+        }
+    </style>
 </head>
 <body>
 <div style="width: 80%; margin: auto;">
     <h2 th:text="${student.name} + '的成绩曲线图'"></h2>
-    <button onclick="goBack()">返回</button>
+    <button class="but-back" onclick="goBack()">返回</button>
     <!-- 用于渲染曲线图的 Canvas -->
     <canvas id="myChart" width="400" height="200"></canvas>
 </div>

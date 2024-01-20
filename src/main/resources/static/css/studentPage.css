@@ -69,3 +69,8 @@ thead {
     line-height: normal;
     vertical-align: middle;
 }
+.msg-error{
+    background-color: white;
+    color: red;
+    margin-right: 20px;
+}

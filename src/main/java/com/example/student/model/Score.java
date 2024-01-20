@@ -21,6 +21,7 @@ public class Score {
     private String classCode;//课程编码
     private String score;//分数
     private Date examTime;//考试时间
+    private String studentNumber;
     @TableField(exist = false)
     private String name;//名称
 }

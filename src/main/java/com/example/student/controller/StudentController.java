@@ -3,6 +3,7 @@ package com.example.student.controller;
 import com.example.student.model.Classes;
 import com.example.student.model.Score;
 import com.example.student.model.Student;
+import com.example.student.model.common.Result;
 import com.example.student.serivce.StudentService;
 import com.sun.media.sound.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
@@ -43,33 +44,15 @@ public class StudentController {
     public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "请选择文件上传");
-            return "redirect:/error";
+            return "redirect:/success";
         }
-
-        try (InputStream inputStream = file.getInputStream()) {
-            Workbook workbook = WorkbookFactory.create(inputStream);
-            Sheet sheet = workbook.getSheetAt(0); // 假设只有一个Sheet
-
-            Iterator<Row> rowIterator = sheet.iterator();
-            while (rowIterator.hasNext()) {
-                Row row = rowIterator.next();
-                Iterator<Cell> cellIterator = row.cellIterator();
-
-                while (cellIterator.hasNext()) {
-                    Cell cell = cellIterator.next();
-                    // 处理单元格内容，可以根据需要进行业务逻辑
-                    System.out.print(cell.toString() + "\t");
-                }
-                System.out.println(); // 换行
-            }
+        Result result = studentService.handleFileUpload(file);
+        if (result.isSuccess()) {
             redirectAttributes.addFlashAttribute("message", "上传成功");
-        } catch (IOException e) {
-            redirectAttributes.addFlashAttribute("message", "上传失败：" + e.getMessage());
-            e.printStackTrace();
-        } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("message", "上传失败：" + e.getMessage());
-            e.printStackTrace();
+            return "redirect:/success";
+        } else {
+            redirectAttributes.addFlashAttribute("message", "上传失败");
+            return "redirect:/success";
         }
-        return "redirect:/success";
     }
 }

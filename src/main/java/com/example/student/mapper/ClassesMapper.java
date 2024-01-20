@@ -12,8 +12,9 @@ import java.util.List;
 public interface ClassesMapper extends BaseMapper<Classes> {
 
     @Select("SELECT c.*, s.id AS scoreId, s.score, DATE_FORMAT(s.exam_time, '%Y-%m-%d')as exam_time  FROM class c " +
-            "LEFT JOIN score s ON c.class_code = s.class_code " +
-            "WHERE c.id = #{id}")
+            "LEFT JOIN score s ON c.class_code = s.class_code and c.student_number = s.student_number " +
+            "LEFT JOIN student st on st.student_number = c.student_number " +
+            "WHERE st.id = #{id} order by s.id")
     @Results({
             @Result(property = "scores", column = "scoreId",
                     many = @Many(select = "com.example.student.mapper.ScoreMapper.selectById"))

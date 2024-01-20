@@ -24,7 +24,8 @@
     </form>
     <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
         <div style="display: flex; justify-content: flex-end; align-items: center;">
-            <input class="in-file" type="file" name="file" style="line-height: normal; vertical-align: middle;" />
+            <div th:if="${message}" th:text="${message}" class="msg-error"></div>
+            <input class="in-file" type="file" name="file" style="line-height: normal; width: 185px; vertical-align: middle;" />
             <button type="submit" class="but-up">上传成绩单</button>
         </div>
     </form>
