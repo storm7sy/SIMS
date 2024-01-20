@@ -10,11 +10,15 @@
 <body>
 <div style="width: 80%; margin: auto;">
     <h2 th:text="${student.name} + '的成绩曲线图'"></h2>
+    <button onclick="goBack()">返回</button>
     <!-- 用于渲染曲线图的 Canvas -->
     <canvas id="myChart" width="400" height="200"></canvas>
 </div>
 <div id="studentData" th:text="${student.scores}" style="display:none;"></div>
 <script th:inline="javascript">
+    function goBack() {
+        window.history.back();
+    }
     // 假设以下是学生成绩数据，实际中应该从后端获取
     var dataString = document.getElementById('studentData').textContent;
     var studentData = JSON.parse(dataString);

@@ -27,7 +27,7 @@ h2 {
     margin-right: 10px;
 }
 
-button {
+button:not(.but-up){
     height: 40px;
     background-color: #007bff; /* 按钮背景色 */
     color: #ffffff; /* 按钮文字颜色 */
@@ -57,4 +57,15 @@ thead {
 
 .table-bordered {
     border-collapse: collapse; /* 单元格边框合并 */
+}
+
+.file-upload-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.file-upload-input {
+    line-height: normal;
+    vertical-align: middle;
 }

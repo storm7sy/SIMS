@@ -42,7 +42,7 @@
 					<input type="password" class="inputgri" name="password" />
 				</td>
 			</tr>
-			<tr>
+			<!--<tr>
 				<td valign="middle" align="right">
 					性别:
 				</td>
@@ -52,11 +52,23 @@
 					女
 					<input type="radio" class="inputgri1" name="sex" value="女"/>
 				</td>
+			</tr>-->
+			<tr>
+				<td valign="middle" align="right">
+					性别:
+				</td>
+				<td valign="middle" align="left">
+					<label for="male">男</label>
+					<input type="radio" class="inputgri1" id="male" name="sex" value="男" checked="checked"/>
+
+					<label for="female">女</label>
+					<input type="radio" class="inputgri1" id="female" name="sex" value="女"/>
+				</td>
 			</tr>
+
 
 			<tr>
 				<td valign="middle" align="right">
-					验证码:
 					<img id="num" th:src="@{/user/code}" />
 					<a href="javascript:;" onclick="document.getElementById('num').src = '/user/code?'+(new Date()).getTime()">换一张</a>
 				</td>
@@ -65,7 +77,7 @@
 				</td>
 			</tr>
 		</table>
-			<input type="submit" class="but1" value="提交" />
+			<button type="button" class="but1" value="Submit &raquo;" />提交</button>
 	</form>
 </div>
 

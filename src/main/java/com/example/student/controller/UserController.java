@@ -33,7 +33,7 @@ public class UserController {
             session.setAttribute("message", login.getUsername()+",欢迎登陆");
             return "redirect:/success"; // 跳转到查询所有
         } else {
-            return "redirect:/index"; // 跳转回到登录
+            return "redirect:/error"; // 跳转回到登录
         }
     }
 	

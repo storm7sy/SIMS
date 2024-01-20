@@ -40,10 +40,10 @@ body {
 }
 #regist {
     position: absolute;
-    top: 38%;
-    left: 45%;
+    top: 40%;
+    left: 43%;
     margin: -150px 0 0 -150px;
-    width: 350px;
+    width: 380px;
     height: 600px;
 }
 #login h1 {
@@ -55,7 +55,7 @@ body {
 #regist h1 {
     position: absolute;
     top: -13%;
-    left: 60%;
+    left: 65%;
     color: #fff;
     text-shadow: 0 0 10px;
     letter-spacing: 1px;
@@ -84,6 +84,7 @@ h1 {
     font-size: 14px;
     border: 1px solid #cccccc;
     padding: 3px;
+    margin-left: auto;
 }
 .horizontal-align {
     display: flex;
@@ -95,9 +96,9 @@ h1 {
     background: url(../img/content_bg.gif) repeat-x left top #ffffff;
     color: #666666;
 }
-input {
+input:not([type="checkbox"]):not([type="radio"]:not(.file-upload-input)), select, textarea {
     width: 300px;
-    height: 28px;
+    height: 16px;
     margin-bottom: 10px;
     outline: none;
     padding: 10px;
@@ -131,10 +132,10 @@ input {
 }
 .but1 {
     position: absolute;
-    bottom: 14%;
-    left: 55%;
+    bottom: 45%;
+    left: 65%;
     width: 150px;
-    height: 50px;
+    height: 55px;
     display: inline-block;
     background-color: #4a77d4;
     border: 1px solid #3762bc;
@@ -146,3 +147,21 @@ input {
     margin: 0 auto;
     text-align: center;
 }
+
+.error_page{
+    background-image: url("../img/error.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    }
+td {
+    white-space: nowrap; /* 防止换行 */
+}
+
+label, input {
+    opacity: 0.2;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
